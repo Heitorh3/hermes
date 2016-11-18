@@ -23,7 +23,7 @@ public class ClientesManager implements Serializable {
 	@Inject
 	transient private ClienteService service;
 	
-	private List<Cliente> clientes = new ArrayList<>();
+	private List<Endereco> enderecos = new ArrayList<>();
 	
 	@Inject
 	private Cliente clienteEdicao;
@@ -54,13 +54,13 @@ public class ClientesManager implements Serializable {
 		this.clienteEdicao = new Cliente();
 		//return "CadastroCliente?faces-redirect=true";
 	}
-
-	public List<Cliente> getClientes() {
-		return clientes;
+	
+	public List<Endereco> getEnderecos() {
+		return enderecos;
 	}
 
-	public void setClientes(List<Cliente> clientes) {
-		this.clientes = clientes;
+	public void setEnderecos(List<Endereco> enderecos) {
+		this.enderecos = enderecos;
 	}
 
 	public Cliente getClienteEdicao() {
