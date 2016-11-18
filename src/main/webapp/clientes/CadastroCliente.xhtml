@@ -26,6 +26,7 @@
 			<div class="ui-fluid">
 				<p:tabView style="margin-top: 10px" id="tabView">
 					<p:tab title="Dados básicos">
+						
 						<p:panelGrid columns="4" layout="grid"
 								columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4"
 								styleClass="panelgrid-noborder">
@@ -51,9 +52,40 @@
 								value="#{clientesManager.clienteEdicao.email}" />
 
 						</p:panelGrid>
+						
+						<p:commandButton value="Novo endereço" styleClass="aw-botao-endereco"
+							oncomplete="PF('novoEnderecoDialog').show()" style="width: auto"
+							action="#{clientesManager.novoEndereco}"
+							process="@this" update="frm:novoEnderecoDialog">
+							<p:resetInput target="frm:novoEnderecoDialog" />
+						</p:commandButton>
+						
+						<p:dataTable value="#{clientesManager.clienteEdicao.enderecos}" var="endereco"
+							emptyMessage="O cliente ainda não possui endereços"
+							style="margin-top: 10px" id="tableEnderecosCliente">
+							<p:column headerText="CEP" priority="6">
+								<h:outputText value="#{endereco.cep}"/>
+							</p:column>
+							<p:column headerText="Logradouro">
+								<h:outputText value="#{endereco.rua}"/>
+							</p:column>
+							<p:column headerText="Número">
+								<h:outputText value="#{endereco.numero}"/>
+							</p:column>
+							<p:column headerText="Bairro" priority="4">
+								<h:outputText value="#{endereco.bairro}"/>
+							</p:column>
+							<p:column headerText="Cidade" priority="6">
+								<h:outputText value="#{endereco.cidade}"/>
+							</p:column>
+							<p:column headerText="Estado" priority="6">
+								<h:outputText value="#{endereco.estado}"/>
+							</p:column>
+						</p:dataTable>
 					</p:tab>
 					
 					<p:tab title="Endereços">
+					
 						<p:commandButton value="Novo endereço" style="width: auto"
 							oncomplete="PF('novoEnderecoDialog').show()"
 							action="#{clientesManager.novoEndereco}"
@@ -92,7 +124,7 @@
 			</div>
 			
 			<p:dialog widgetVar="novoEnderecoDialog" id="novoEnderecoDialog"
-				header="Novo endereço" resizable="false" responsive="true">
+				header="Novo endereço" modal="true" resizable="false" responsive="true">
 				
 				<h:panelGroup id="novoEnderecoPanel" layout="block" styleClass="ui-fluid">
 					<p:messages autoUpdate="false" />
@@ -121,7 +153,7 @@
 						
 						<p:outputLabel/>
 						<p:commandButton value="Adicionar" process="novoEnderecoDialog"
-								update="tabView:enderecosTable novoEnderecoPanel"
+								update="tabView:enderecosTable tabView:tableEnderecosCliente novoEnderecoPanel"
 								oncomplete="if (!args.validationFailed) PF('novoEnderecoDialog').hide()">
 							<p:collector value="#{clientesManager.enderecoEdicao}"
 								addTo="#{clientesManager.clienteEdicao.enderecos}" />
