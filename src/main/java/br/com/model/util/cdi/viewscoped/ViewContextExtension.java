@@ -1,4 +1,4 @@
-package br.com.model.util.cdi;
+package br.com.model.util.cdi.viewscoped;
 
 import javax.enterprise.event.Observes;
 import javax.enterprise.inject.spi.AfterBeanDiscovery;

@@ -16,7 +16,6 @@ public interface ClienteRepository extends EntityRepository<Cliente, Long> {
 	Optional<Cliente> findByName(String nome);
 	
 	
-	//@Query("select c from Cliente c where c.email = ?1")
 	Optional<Cliente> findByEmail(String email);
 	
 }

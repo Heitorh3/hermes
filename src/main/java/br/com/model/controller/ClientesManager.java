@@ -4,8 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.faces.application.FacesMessage;
-import javax.faces.context.FacesContext;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -14,14 +12,12 @@ import br.com.model.domain.Cliente;
 import br.com.model.domain.Endereco;
 import br.com.model.service.ClienteService;
 import br.com.model.service.exception.NomeClienteJaCadastradoException;
+import br.com.model.util.cdi.jsf.FacesUtil;
 
 @Named
 @ViewScoped
 public class ClientesManager implements Serializable {
 
-	/**
-	 * 
-	 */
 	private static final long serialVersionUID = 1L;
 
 	@Inject
@@ -34,22 +30,29 @@ public class ClientesManager implements Serializable {
 	
 	private Endereco enderecoEdicao;
 
+	//FacesUtil.atualizaTela(new String[]{"frm:fabricantes-Table","frm:messages"});
 	public void salvar(){
 		try {
 			service.salvar(clienteEdicao);
-			FacesContext.getCurrentInstance().addMessage(null, new FacesMessage("Cliente salvo com sucesso!"));
+			this.limpar();
+			
+			FacesUtil.addSuccessMessage("Usuário cadastrado com sucesso!");
 		} catch (NomeClienteJaCadastradoException e) {
-			e.printStackTrace();
+			FacesUtil.addErrorMessage(e.getMessage());
 		}
+	}
+	
+	public void limpar(){
+		this.clienteEdicao = new Cliente();
 	}
 	
 	public void novoEndereco() {
 		this.enderecoEdicao = new Endereco();
 	}
 	
-	public String novoCliente() {
-		clienteEdicao = new Cliente();
-		return "CadastroCliente?faces-redirect=true";
+	public void novoCliente() {
+		this.clienteEdicao = new Cliente();
+		//return "CadastroCliente?faces-redirect=true";
 	}
 
 	public List<Cliente> getClientes() {

@@ -21,7 +21,7 @@
 				</p:toolbarGroup>
 			</p:toolbar>
 			
-			<p:messages autoUpdate="false" />
+			<p:messages autoUpdate="false" closable="true"/>
 			
 			<div class="ui-fluid">
 				<p:tabView style="margin-top: 10px" id="tabView">
@@ -39,11 +39,11 @@
 								style="width: 70%" />
 							
 							<p:outputLabel value="Telefone" for="telefone" />
-							<p:inputText id="telefone" required="true"
+							<p:inputMask id="telefone" required="true" mask="(99)9999-9999"
 								value="#{clientesManager.clienteEdicao.telefone}" />
 							
 							<p:outputLabel value="Celular" for="celular" />
-							<p:inputText id="celular"
+							<p:inputMask id="celular" required="true" mask="(99)99999-9999"
 								value="#{clientesManager.clienteEdicao.celular}" />
 							
 							<p:outputLabel value="E-mail" for="email" />

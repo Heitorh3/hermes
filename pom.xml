@@ -11,7 +11,7 @@
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
 		<!-- DeltaSpike version -->
-		<deltaspike.version>1.6.0</deltaspike.version>
+		<deltaspike.version>1.7.2</deltaspike.version>
 
 		<!-- Weld Version -->
 		<weld.version>2.3.3.Final</weld.version>

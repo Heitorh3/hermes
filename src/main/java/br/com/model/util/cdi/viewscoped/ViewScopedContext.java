@@ -1,4 +1,4 @@
-package br.com.model.util.cdi;
+package br.com.model.util.cdi.viewscoped;
 
 import java.lang.annotation.Annotation;
 import java.util.Map;

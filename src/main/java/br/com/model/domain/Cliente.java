@@ -47,7 +47,7 @@ public class Cliente implements Serializable{
 	@Column(name = "observacoes")
 	private String observacoes;
 	
-	@OneToMany(mappedBy = "endereco")
+	@OneToMany(mappedBy = "cliente")
 	private List<Endereco> enderecos = new ArrayList<>();
 	
 	public Cliente() {
