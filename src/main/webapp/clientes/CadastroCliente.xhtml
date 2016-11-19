@@ -64,21 +64,21 @@
 							emptyMessage="O cliente ainda não possui endereços"
 							style="margin-top: 10px" id="tableEnderecosCliente">
 							<p:column headerText="CEP" priority="6">
-								<h:outputText value="#{endereco.cep}"/>
+								<h:outputText value="#{endereco.cep}" id="cep"/>
 							</p:column>
 							<p:column headerText="Logradouro">
-								<h:outputText value="#{endereco.rua}"/>
+								<h:outputText value="#{endereco.rua}" id="logradouro"/>
 							</p:column>
 							<p:column headerText="Número">
-								<h:outputText value="#{endereco.numero}"/>
+								<h:outputText value="#{endereco.numero}" id="numero"/>
 							</p:column>
 							<p:column headerText="Bairro" priority="4">
-								<h:outputText value="#{endereco.bairro}"/>
+								<h:outputText value="#{endereco.bairro}" id="bairro"/>
 							</p:column>
 							<p:column headerText="Cidade" priority="6">
-								<h:outputText value="#{endereco.cidade}"/>
+								<h:outputText value="#{endereco.cidade}" id="cidade"/>
 							</p:column>
-							<p:column headerText="Estado" priority="6">
+							<p:column headerText="Estado" priority="6" id="estado">
 								<h:outputText value="#{endereco.estado}"/>
 							</p:column>
 						</p:dataTable>
@@ -133,7 +133,9 @@
 							columnClasses="ui-grid-col-4, ui-grid-col-8">
 						<p:outputLabel value="CEP" for="cep" />
 						<p:inputText id="cep" required="true"
-							value="#{clientesManager.enderecoEdicao.cep}" />
+							value="#{clientesManager.enderecoEdicao.cep}" placeholder="Inisira um CEP" onblur="consultarCEP()">
+							<p:ajax event="blur"/>
+						</p:inputText>
 							
 						<p:outputLabel value="Logradouro" for="logradouro" />
 						<p:inputText id="logradouro" required="true"
@@ -150,6 +152,10 @@
 						<p:outputLabel value="Cidade" for="cidade" />
 						<p:inputText id="cidade"
 							value="#{clientesManager.enderecoEdicao.cidade}" />
+							
+						<p:outputLabel value="Estado" for="estado" />
+						<p:inputText id="estado"
+							value="#{clientesManager.enderecoEdicao.estado}" />
 						
 						<p:outputLabel/>
 						<p:commandButton value="Adicionar" process="novoEnderecoDialog"
