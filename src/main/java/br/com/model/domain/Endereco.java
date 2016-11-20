@@ -22,19 +22,21 @@ public class Endereco implements Serializable{
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private Long codigo;
-	
+
+	@NotBlank(message = "A rua é obrigatório")
 	@Column(name = "rua")
 	private String rua;
 	
+	@NotBlank(message = "O bairro é obrigatório")
 	@Column(name = "bairro")
 	private String bairro;
 	
 	@Column(name = "cidade")
 	private String cidade;
 	
-	@NotBlank(message = "O CEP é obrigatório")
 	private String cep;
 	
+	@NotBlank(message = "O número é obrigatório")
 	@Column(name = "numero")
 	private String numero;
 	

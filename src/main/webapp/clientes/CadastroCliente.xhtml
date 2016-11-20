@@ -132,9 +132,9 @@
 					<p:panelGrid columns="2" layout="grid" styleClass="panelgrid-noborder"
 							columnClasses="ui-grid-col-4, ui-grid-col-8">
 						<p:outputLabel value="CEP" for="cep" />
-						<p:inputText id="cep" required="true"
-							value="#{clientesManager.enderecoEdicao.cep}" placeholder="Inisira um CEP" onblur="consultarCEP()">
-							<p:ajax event="blur"/>
+						<p:inputText id="cep" value="#{clientesManager.enderecoEdicao.cep}" 
+							placeholder="Inisira um CEP" onblur="consultarCEP()">
+							<!-- <p:ajax event="blur"/> -->
 						</p:inputText>
 							
 						<p:outputLabel value="Logradouro" for="logradouro" />
