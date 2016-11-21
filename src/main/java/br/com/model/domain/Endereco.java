@@ -2,7 +2,6 @@ package br.com.model.domain;
 
 import java.io.Serializable;
 
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -43,9 +42,6 @@ public class Endereco implements Serializable{
 	@Column(name = "estado")
 	private String estado;
 
-    @ManyToOne(cascade=CascadeType.ALL)
-    private Cliente cliente;
-	
 	public Endereco() {
 		super();
 	}
@@ -105,14 +101,6 @@ public class Endereco implements Serializable{
 
 	public void setEstado(String estado) {
 		this.estado = estado;
-	}
-
-	public Cliente getCliente() {
-		return cliente;
-	}
-
-	public void setCliente(Cliente cliente) {
-		this.cliente = cliente;
 	}
 
 	public String getNumero() {
