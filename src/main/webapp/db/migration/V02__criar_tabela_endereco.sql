@@ -8,4 +8,4 @@
         rua varchar(255) not null,
         codigo_cliente bigint,
         primary key (codigo)
-    );
+    )engine=InnoDB;
