@@ -53,7 +53,7 @@
 
 						</p:panelGrid>
 						
-						<p:commandButton value="Novo endereço" styleClass="aw-botao-endereco"
+						<p:commandButton value="Novo endereço" styleClass="aw-botao-endereco" icon="ui-icon-extlink" 
 							oncomplete="PF('novoEnderecoDialog').show()" style="width: auto"
 							action="#{clientesManager.novoEndereco}"
 							process="@this" update="frm:novoEnderecoDialog">
@@ -116,14 +116,10 @@
 							</p:column>
 						</p:dataTable>
 					</p:tab>
-					
-					<p:tab title="Observações">
-						<p:inputTextarea rows="7" value="#{clientesManager.clienteEdicao.observacoes}" />
-					</p:tab>
 				</p:tabView>
 			</div>
 			
-			<p:dialog widgetVar="novoEnderecoDialog" id="novoEnderecoDialog"
+			<p:dialog widgetVar="novoEnderecoDialog" id="novoEnderecoDialog"  width="450"
 				header="Novo endereço" modal="true" resizable="false" responsive="true">
 				
 				<h:panelGroup id="novoEnderecoPanel" layout="block" styleClass="ui-fluid">
@@ -145,7 +141,7 @@
 						<p:inputText id="numero" required="true"
 							value="#{clientesManager.enderecoEdicao.numero}" />
 						
-						<p:outputLabel value="Bairro" for="bairro" />
+						<p:outputLabel value="Bairro" for="bairro" rendered="true" />
 						<p:inputText id="bairro"
 							value="#{clientesManager.enderecoEdicao.bairro}" />
 						

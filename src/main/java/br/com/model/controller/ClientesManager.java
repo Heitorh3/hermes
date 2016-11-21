@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.annotation.PostConstruct;
 import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
@@ -30,6 +31,10 @@ public class ClientesManager implements Serializable {
 	
 	private Endereco enderecoEdicao;
 
+	@PostConstruct
+	public void inicializar(){
+		this.clienteEdicao.setEnderecos(new ArrayList<>());
+	}
 	//FacesUtil.atualizaTela(new String[]{"frm:fabricantes-Table","frm:messages"});
 	public void salvar(){
 		try {
