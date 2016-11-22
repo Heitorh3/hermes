@@ -46,7 +46,7 @@ public class Cliente implements Serializable{
 	@Column(name = "email",unique = true)
 	private String email;
 	
-	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER)
+	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 	@JoinColumn(name = "codigo_cliente")
 	private List<Endereco> enderecos;
 	
