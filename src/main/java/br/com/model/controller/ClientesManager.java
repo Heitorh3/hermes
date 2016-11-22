@@ -11,6 +11,7 @@ import javax.inject.Named;
 
 import br.com.model.domain.Cliente;
 import br.com.model.domain.Endereco;
+import br.com.model.repository.ClienteRepository;
 import br.com.model.service.ClienteService;
 import br.com.model.service.exception.NomeClienteJaCadastradoException;
 import br.com.model.util.cdi.jsf.FacesUtil;
@@ -24,7 +25,13 @@ public class ClientesManager implements Serializable {
 	@Inject
 	transient private ClienteService service;
 	
+	@Inject
+	private ClienteRepository repository;
+	
 	private List<Endereco> enderecos;
+	
+	private List<Cliente> clientes;
+	
 	
 	@Inject
 	private Cliente clienteEdicao;
@@ -34,6 +41,7 @@ public class ClientesManager implements Serializable {
 	@PostConstruct
 	public void inicializar(){
 		this.enderecos = new ArrayList<Endereco>();
+		this.clientes = repository.findAll();
 	}
 	
 	//FacesUtil.atualizaTela(new String[]{"frm:fabricantes-Table","frm:messages"});
@@ -88,6 +96,10 @@ public class ClientesManager implements Serializable {
 
 	public void setEnderecos(List<Endereco> enderecos) {
 		this.enderecos = enderecos;
+	}
+
+	public List<Cliente> getClientes() {
+		return clientes;
 	}
 
 }

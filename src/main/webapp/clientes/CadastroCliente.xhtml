@@ -50,9 +50,33 @@
 							<p:outputLabel value="E-mail" for="email" />
 							<p:inputText id="email" required="true"
 								value="#{clientesManager.clienteEdicao.email}" />
-
+							
 						</p:panelGrid>
 						
+					    <p:dataTable value="#{clientesManager.clientes}" var="cliente"
+										 emptyMessage="Nenhum cliente cadastrado" style="margin-top: 15px">
+										 
+							<p:column headerText="Nome" priority="2">
+								<h:outputText value="#{cliente.nome}" id="nome"/>
+							</p:column>
+							<p:column headerText="Telefone" priority="2">
+								<h:outputText value="#{cliente.telefone}" id="telefone"/>
+							</p:column>
+							<p:column headerText="Telefone Celular" priority="2">
+								<h:outputText value="#{cliente.celular}" id="celular"/>
+							</p:column>
+							<p:column headerText="Email" priority="6">
+								<h:outputText value="#{cliente.email}" id="email"/>
+							</p:column>
+							<p:column headerText="Opções">
+								<h:outputText value="excluir" id="opcoes"/>
+							</p:column>
+							
+							</p:dataTable>						
+					</p:tab>
+					
+					<p:tab title="Endereços">
+					
 						<p:commandButton value="Novo endereço" styleClass="aw-botao-endereco" icon="ui-icon-extlink" 
 							oncomplete="PF('novoEnderecoDialog').show()" style="width: auto"
 							action="#{clientesManager.novoEndereco}"
@@ -83,39 +107,6 @@
 							</p:column>
 						</p:dataTable>
 					</p:tab>
-					
-				<!-- 	<p:tab title="Endereços">
-					
-						<p:commandButton value="Novo endereço" style="width: auto"
-							oncomplete="PF('novoEnderecoDialog').show()"
-							action="#{clientesManager.novoEndereco}"
-							process="@this" update="frm:novoEnderecoDialog">
-							<p:resetInput target="frm:novoEnderecoDialog" />
-						</p:commandButton>
-						
-						<p:dataTable value="#{clientesManager.clienteEdicao.enderecos}" var="endereco"
-							emptyMessage="O cliente ainda não possui endereços"
-							style="margin-top: 10px" id="enderecosTable">
-							<p:column headerText="CEP" priority="6">
-								<h:outputText value="#{endereco.cep}"/>
-							</p:column>
-							<p:column headerText="Logradouro">
-								<h:outputText value="#{endereco.rua}"/>
-							</p:column>
-							<p:column headerText="Número">
-								<h:outputText value="#{endereco.numero}"/>
-							</p:column>
-							<p:column headerText="Bairro" priority="4">
-								<h:outputText value="#{endereco.bairro}"/>
-							</p:column>
-							<p:column headerText="Cidade" priority="6">
-								<h:outputText value="#{endereco.cidade}"/>
-							</p:column>
-							<p:column headerText="Estado" priority="6">
-								<h:outputText value="#{endereco.estado}"/>
-							</p:column>
-						</p:dataTable>
-					</p:tab> -->
 				</p:tabView>
 			</div>
 			
