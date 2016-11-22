@@ -155,7 +155,7 @@
 						
 						<p:outputLabel/>
 						<p:commandButton value="Adicionar" process="novoEnderecoDialog"
-								update="tabView:enderecosTable tabView:tableEnderecosCliente novoEnderecoPanel"
+								update="tabView:tableEnderecosCliente novoEnderecoPanel"
 								oncomplete="if (!args.validationFailed) PF('novoEnderecoDialog').hide()">
 							<p:collector value="#{clientesManager.enderecoEdicao}"
 								addTo="#{clientesManager.clienteEdicao.enderecos}" />
