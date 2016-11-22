@@ -27,7 +27,7 @@
 				<p:tabView style="margin-top: 10px" id="tabView">
 					<p:tab title="Dados básicos">
 						
-						<p:panelGrid columns="4" layout="grid"
+						<p:panelGrid columns="4" layout="grid" id="clientePanel"
 								columnClasses="ui-grid-col-2, ui-grid-col-4, ui-grid-col-2, ui-grid-col-4"
 								styleClass="panelgrid-noborder">
 							<p:outputLabel value="Nome" for="nome" />
@@ -54,8 +54,14 @@
 						</p:panelGrid>
 						
 					    <p:dataTable value="#{clientesManager.clientes}" var="cliente"
-										 emptyMessage="Nenhum cliente cadastrado" style="margin-top: 15px">
-										 
+										 emptyMessage="Nenhum cliente cadastrado" style="margin-top: 15px"
+										 paginator="true" paginatorAlwaysVisible="true" paginatorPosition="bottom"
+										 selection="#{clientesManager.clienteEdicao}" 
+		    							 selectionMode="single" rowKey="#{cliente.codigo}">
+							
+							<p:ajax event="rowSelect" update=":frm:tabView:clientePanel :frm:tabView:tableEnderecosCliente"/>
+		    				<p:ajax event="rowUnselect" update=":frm:tabView:clientePanel :frm:tabView:tableEnderecosCliente"/>
+		    												 
 							<p:column headerText="Nome" priority="2">
 								<h:outputText value="#{cliente.nome}" id="nome"/>
 							</p:column>
