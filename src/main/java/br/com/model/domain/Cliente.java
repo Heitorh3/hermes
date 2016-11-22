@@ -1,6 +1,7 @@
  package br.com.model.domain;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -48,7 +49,7 @@ public class Cliente implements Serializable{
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 	@JoinColumn(name = "codigo_cliente")
-	private List<Endereco> enderecos;
+	private List<Endereco> enderecos = new ArrayList<Endereco>();
 	
 	public Cliente() {
 	}

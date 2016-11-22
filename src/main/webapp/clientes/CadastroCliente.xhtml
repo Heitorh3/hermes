@@ -60,7 +60,7 @@
 							<p:resetInput target="frm:novoEnderecoDialog" />
 						</p:commandButton>
 						
-						<p:dataTable value="#{clientesManager.clienteEdicao.enderecos}" var="endereco"
+						<p:dataTable value="#{clientesManager.enderecos}" var="endereco"
 							emptyMessage="O cliente ainda não possui endereços"
 							style="margin-top: 10px" id="tableEnderecosCliente">
 							<p:column headerText="CEP" priority="6">
@@ -125,12 +125,10 @@
 				<h:panelGroup id="novoEnderecoPanel" layout="block" styleClass="ui-fluid">
 					<p:messages autoUpdate="false" />
 				
-					<p:panelGrid columns="2" layout="grid" styleClass="panelgrid-noborder"
-							columnClasses="ui-grid-col-4, ui-grid-col-8">
+					<p:panelGrid columns="2" layout="grid" styleClass="panelgrid-noborder" columnClasses="ui-grid-col-4, ui-grid-col-8">
 						<p:outputLabel value="CEP" for="cep" />
 						<p:inputText id="cep" value="#{clientesManager.enderecoEdicao.cep}" 
 							placeholder="Inisira um CEP" onblur="consultarCEP()">
-							<!-- <p:ajax event="blur"/> -->
 						</p:inputText>
 							
 						<p:outputLabel value="Logradouro" for="logradouro" />
@@ -153,12 +151,12 @@
 						<p:inputText id="estado"
 							value="#{clientesManager.enderecoEdicao.estado}" />
 						
-						<p:outputLabel/>
-						<p:commandButton value="Adicionar" process="novoEnderecoDialog"
+						<p:outputLabel/> 
+						<p:commandButton value="Adicionar" process="novoEnderecoDialog" action="#{clientesManager.adicionarEndereco}"
 								update="tabView:tableEnderecosCliente novoEnderecoPanel"
 								oncomplete="if (!args.validationFailed) PF('novoEnderecoDialog').hide()">
-							<p:collector value="#{clientesManager.enderecoEdicao}"
-								addTo="#{clientesManager.clienteEdicao.enderecos}" />
+							<!-- <p:collector value="#{clientesManager.enderecoEdicao}"
+								addTo="#{clientesManager.clienteEdicao.enderecos}"/> -->
 						</p:commandButton>
 					</p:panelGrid>
 				</h:panelGroup>

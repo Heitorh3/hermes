@@ -24,7 +24,7 @@ public class ClientesManager implements Serializable {
 	@Inject
 	transient private ClienteService service;
 	
-	private List<Endereco> enderecos = new ArrayList<>();
+	private List<Endereco> enderecos;
 	
 	@Inject
 	private Cliente clienteEdicao;
@@ -33,11 +33,13 @@ public class ClientesManager implements Serializable {
 
 	@PostConstruct
 	public void inicializar(){
-		this.clienteEdicao.setEnderecos(new ArrayList<>());
+		this.enderecos = new ArrayList<Endereco>();
 	}
+	
 	//FacesUtil.atualizaTela(new String[]{"frm:fabricantes-Table","frm:messages"});
 	public void salvar(){
 		try {
+			this.clienteEdicao.setEnderecos(enderecos);
 			service.salvar(clienteEdicao);
 			this.limpar();
 			
@@ -47,8 +49,12 @@ public class ClientesManager implements Serializable {
 		}
 	}
 	
+	public void adicionarEndereco(){
+		enderecos.add(enderecoEdicao);		
+	}
 	public void limpar(){
 		this.clienteEdicao = new Cliente();
+		this.enderecos = new ArrayList<Endereco>();
 	}
 	
 	public void novoEndereco() {
@@ -60,14 +66,6 @@ public class ClientesManager implements Serializable {
 		//return "CadastroCliente?faces-redirect=true";
 	}
 	
-	public List<Endereco> getEnderecos() {
-		return enderecos;
-	}
-
-	public void setEnderecos(List<Endereco> enderecos) {
-		this.enderecos = enderecos;
-	}
-
 	public Cliente getClienteEdicao() {
 		return clienteEdicao;
 	}
@@ -82,6 +80,14 @@ public class ClientesManager implements Serializable {
 
 	public void setEnderecoEdicao(Endereco enderecoEdicao) {
 		this.enderecoEdicao = enderecoEdicao;
+	}
+
+	public List<Endereco> getEnderecos() {
+		return enderecos;
+	}
+
+	public void setEnderecos(List<Endereco> enderecos) {
+		this.enderecos = enderecos;
 	}
 
 }
