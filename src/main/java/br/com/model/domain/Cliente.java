@@ -49,7 +49,7 @@ public class Cliente implements Serializable{
 	
 	@OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, orphanRemoval = true)
 	@JoinColumn(name = "codigo_cliente")
-	private List<Endereco> enderecos = new ArrayList<Endereco>();
+	private List<Endereco> enderecos = new ArrayList<>();
 	
 	public Cliente() {
 	}

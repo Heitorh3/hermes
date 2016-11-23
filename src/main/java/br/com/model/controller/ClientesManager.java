@@ -1,7 +1,6 @@
 package br.com.model.controller;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.annotation.PostConstruct;
@@ -28,41 +27,36 @@ public class ClientesManager implements Serializable {
 	@Inject
 	private ClienteRepository repository;
 	
-	private List<Endereco> enderecos;
-	
 	private List<Cliente> clientes;
-	
 	
 	@Inject
 	private Cliente clienteEdicao;
+	
+	private Cliente clienteSelecionado;
 	
 	private Endereco enderecoEdicao;
 
 	@PostConstruct
 	public void inicializar(){
-		this.enderecos = new ArrayList<Endereco>();
 		this.clientes = repository.findAll();
 	}
 	
 	//FacesUtil.atualizaTela(new String[]{"frm:fabricantes-Table","frm:messages"});
 	public void salvar(){
 		try {
-			this.clienteEdicao.setEnderecos(enderecos);
 			service.salvar(clienteEdicao);
 			this.limpar();
 			
+			this.inicializar();
 			FacesUtil.addSuccessMessage("Usuário cadastrado com sucesso!");
 		} catch (NomeClienteJaCadastradoException e) {
 			FacesUtil.addErrorMessage(e.getMessage());
 		}
 	}
 	
-	public void adicionarEndereco(){
-		enderecos.add(enderecoEdicao);		
-	}
 	public void limpar(){
 		this.clienteEdicao = new Cliente();
-		this.enderecos = new ArrayList<Endereco>();
+		FacesUtil.atualizaTela(new String[]{"frm:toolbar","frm:messages", "frm:tableClientes"});
 	}
 	
 	public void novoEndereco() {
@@ -71,6 +65,7 @@ public class ClientesManager implements Serializable {
 	
 	public void novoCliente() {
 		this.clienteEdicao = new Cliente();
+		this.clienteSelecionado = null;
 		//return "CadastroCliente?faces-redirect=true";
 	}
 	
@@ -90,12 +85,12 @@ public class ClientesManager implements Serializable {
 		this.enderecoEdicao = enderecoEdicao;
 	}
 
-	public List<Endereco> getEnderecos() {
-		return enderecos;
+	public Cliente getClienteSelecionado() {
+		return clienteSelecionado;
 	}
 
-	public void setEnderecos(List<Endereco> enderecos) {
-		this.enderecos = enderecos;
+	public void setClienteSelecionado(Cliente clienteSelecionado) {
+		this.clienteSelecionado = clienteSelecionado;
 	}
 
 	public List<Cliente> getClientes() {
