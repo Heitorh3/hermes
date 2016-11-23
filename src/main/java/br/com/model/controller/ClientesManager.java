@@ -56,7 +56,7 @@ public class ClientesManager implements Serializable {
 	
 	public void limpar(){
 		this.clienteEdicao = new Cliente();
-		FacesUtil.atualizaTela(new String[]{"frm:toolbar","frm:messages", "frm:tableClientes"});
+		FacesUtil.atualizaTela(new String[]{"frm:toolbar","frm:messages"});
 	}
 	
 	public void novoEndereco() {

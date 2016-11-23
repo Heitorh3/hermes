@@ -65,11 +65,11 @@
 					    <p:dataTable value="#{clientesManager.clientes}" var="cliente" id="tableClientes"
 										 emptyMessage="Nenhum cliente cadastrado" style="margin-top: 15px"
 										 paginator="true" paginatorAlwaysVisible="true" paginatorPosition="bottom"
-										 selection="#{clientesManager.clienteSelecionado}" 
+										 selection="#{clientesManager.clienteEdicao}" 
 		    							 selectionMode="single" rowKey="#{cliente.codigo}">
 							
-		    				<p:ajax event="rowSelect" update=":frm:toolbar :frm:tabView:tableEnderecosCliente"/>
-		    				<p:ajax event="rowUnselect" update=":frm:toolbar :frm:tabView:tableEnderecosCliente"/>
+		    				<p:ajax event="rowSelect" update=":frm:toolbar :frm:tabView:clientePanel :frm:tabView:tableEnderecosCliente"/>
+		    				<p:ajax event="rowUnselect" update=":frm:toolbar :frm:tabView:clientePanel :frm:tabView:tableEnderecosCliente"/>
 		    						
 		    				<p:column headerText="#" style="width:20px">
 								<h:outputText value="#{cliente.codigo}" id="codigo"/>
