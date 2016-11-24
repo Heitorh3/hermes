@@ -16,6 +16,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.br.CPF;
 
 @Entity
 @Table(name="cliente")
@@ -40,6 +41,7 @@ public class Cliente implements Serializable{
 	@Column(name = "celular")
 	private String celular;
 	
+	@CPF
 	@NotEmpty(message = "O CPF não pode ser nulo!")
 	@Column(name = "cpf", nullable = false, unique = true)
 	private String cpf;

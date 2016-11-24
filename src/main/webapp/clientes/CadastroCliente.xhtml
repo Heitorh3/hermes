@@ -65,13 +65,13 @@
 					    <p:dataTable value="#{clientesManager.clientes}" var="cliente" id="tableClientes"
 										 emptyMessage="Nenhum cliente cadastrado" style="margin-top: 15px"
 										 paginator="true" paginatorAlwaysVisible="true" paginatorPosition="bottom"
-										 selection="#{clientesManager.clienteSelecionado}" 
-		    							 selectionMode="single" rowKey="#{cliente.codigo}">
+										 selection="#{clientesManager.clienteEdicao}" rows="15"
+		    							 selectionMode="single" rowKey="#{cliente.codigo}" reflow="true">
 							
-		    				<p:ajax event="rowSelect" update=":frm:toolbar"/>
-		    				<p:ajax event="rowUnselect" update=":frm:toolbar :frm:tabView:tableEnderecosCliente">
-		    					<f:setPropertyActionListener value="#{clientesManager.clienteSelecionado}" 
-	    							target="#{clientesManager.clienteEdicao}"/>
+		    				<p:ajax event="rowSelect" update=":frm:toolbar :frm:tabView:clientePanel :frm:tabView:tableEnderecosCliente"/>
+		    				<p:ajax event="rowUnselect" update=":frm:toolbar :frm:tabView:clientePanel :frm:tabView:tableEnderecosCliente">
+			    				<!-- <f:setPropertyActionListener value="#{clientesManager.clienteEdicao}" 
+		    							target="#{clientesManager.clienteSelecionado}"/> -->
 		    				</p:ajax>
 		    						
 		    				<p:column headerText="#" style="width:20px">
@@ -129,11 +129,12 @@
 			</div>
 			
 			<p:dialog widgetVar="novoEnderecoDialog" id="novoEnderecoDialog"  width="450"
-				header="Novo endereço" modal="true" resizable="false" responsive="true">
+				header="Novo endereço" modal="true" resizable="false" responsive="true" closeOnEscape="true">
 				
 				<h:panelGroup id="novoEnderecoPanel" layout="block" styleClass="ui-fluid">
 					<p:messages autoUpdate="false" />
-				
+					<p:defaultCommand target="salvar-button" scope="novoEnderecoDialog"/>
+					
 					<p:panelGrid columns="2" layout="grid" styleClass="panelgrid-noborder" columnClasses="ui-grid-col-4, ui-grid-col-8">
 						<p:outputLabel value="CEP" for="cep" />
 						<p:inputText id="cep" value="#{clientesManager.enderecoEdicao.cep}" 
@@ -161,7 +162,7 @@
 							value="#{clientesManager.enderecoEdicao.estado}" />
 						
 						<p:outputLabel/> 
-						<p:commandButton value="Adicionar" process="novoEnderecoDialog" 
+						<p:commandButton value="Adicionar" process="novoEnderecoDialog"  id="salvar-button"
 								update="tabView:tableEnderecosCliente novoEnderecoPanel"
 								oncomplete="if (!args.validationFailed) PF('novoEnderecoDialog').hide()">
 							<p:collector value="#{clientesManager.enderecoEdicao}"

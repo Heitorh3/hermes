@@ -48,7 +48,7 @@ public class ClientesManager implements Serializable {
 			this.limpar();
 			
 			this.inicializar();
-			FacesUtil.addSuccessMessage("Usuário cadastrado com sucesso!");
+			FacesUtil.addSuccessMessage("Usuário salvo com sucesso!");
 		} catch (NomeClienteJaCadastradoException e) {
 			FacesUtil.addErrorMessage(e.getMessage());
 		}
@@ -56,7 +56,7 @@ public class ClientesManager implements Serializable {
 	
 	public void limpar(){
 		this.clienteEdicao = new Cliente();
-		FacesUtil.atualizaTela(new String[]{"frm:toolbar","frm:messages", "frm:tableClientes"});
+		FacesUtil.atualizaTela(new String[]{"frm:toolbar","frm:messages"});
 	}
 	
 	public void novoEndereco() {
@@ -65,7 +65,7 @@ public class ClientesManager implements Serializable {
 	
 	public void novoCliente() {
 		this.clienteEdicao = new Cliente();
-		this.clienteSelecionado = null;
+		this.clienteSelecionado = new Cliente();
 		//return "CadastroCliente?faces-redirect=true";
 	}
 	
