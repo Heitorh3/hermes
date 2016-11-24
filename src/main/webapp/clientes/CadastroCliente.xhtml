@@ -68,8 +68,11 @@
 										 selection="#{clientesManager.clienteSelecionado}" 
 		    							 selectionMode="single" rowKey="#{cliente.codigo}">
 							
-		    				<p:ajax event="rowSelect" update=":frm:toolbar :frm:tabView:tableEnderecosCliente"/>
-		    				<p:ajax event="rowUnselect" update=":frm:toolbar :frm:tabView:tableEnderecosCliente"/>
+		    				<p:ajax event="rowSelect" update=":frm:toolbar"/>
+		    				<p:ajax event="rowUnselect" update=":frm:toolbar :frm:tabView:tableEnderecosCliente">
+		    					<f:setPropertyActionListener value="#{clientesManager.clienteSelecionado}" 
+	    							target="#{clientesManager.clienteEdicao}"/>
+		    				</p:ajax>
 		    						
 		    				<p:column headerText="#" style="width:20px">
 								<h:outputText value="#{cliente.codigo}" id="codigo"/>
