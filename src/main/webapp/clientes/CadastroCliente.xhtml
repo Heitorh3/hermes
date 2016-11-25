@@ -20,13 +20,14 @@
             		
 					<p:commandButton icon="ui-icon-pencil" title="Editar" disabled="#{clientesManager.clienteSelecionado == null}"
 	    							process="@this" update=":frm:tabView:clientePanel :frm:tabView:tableEnderecosCliente">
-	    							<f:setPropertyActionListener value="#{clientesManager.clienteSelecionado}" 
+	    					<f:setPropertyActionListener value="#{clientesManager.clienteSelecionado}" 
 	    							target="#{clientesManager.clienteEdicao}"/>
 	    			</p:commandButton>
 				</p:toolbarGroup>
 				<p:toolbarGroup align="right">
 					<p:commandButton value="Novo" action="#{clientesManager.novoCliente}"
 						process="@this" update="@form" />
+						
 				</p:toolbarGroup>
 			</p:toolbar>
 			
@@ -68,11 +69,8 @@
 										 selection="#{clientesManager.clienteEdicao}" rows="15"
 		    							 selectionMode="single" rowKey="#{cliente.codigo}" reflow="true">
 							
-		    				<p:ajax event="rowSelect" update=":frm:toolbar :frm:tabView:clientePanel :frm:tabView:tableEnderecosCliente"/>
-		    				<p:ajax event="rowUnselect" update=":frm:toolbar :frm:tabView:clientePanel :frm:tabView:tableEnderecosCliente">
-			    				<!-- <f:setPropertyActionListener value="#{clientesManager.clienteEdicao}" 
-		    							target="#{clientesManager.clienteSelecionado}"/> -->
-		    				</p:ajax>
+		    				<p:ajax event="rowSelect" update=":frm:toolbar"/>
+		    				<p:ajax event="rowUnselect" update=":frm:toolbar :frm:tabView:clientePanel :frm:tabView:tableEnderecosCliente" />			    				
 		    						
 		    				<p:column headerText="#" style="width:20px">
 								<h:outputText value="#{cliente.codigo}" id="codigo"/>
