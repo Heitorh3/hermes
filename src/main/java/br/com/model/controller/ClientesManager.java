@@ -32,8 +32,6 @@ public class ClientesManager implements Serializable {
 	@Inject
 	private Cliente clienteEdicao;
 	
-	private Cliente clienteSelecionado;
-	
 	private Endereco enderecoEdicao;
 
 	@PostConstruct
@@ -65,7 +63,7 @@ public class ClientesManager implements Serializable {
 	
 	public void novoCliente() {
 		this.clienteEdicao = new Cliente();
-		this.clienteSelecionado = null;
+		FacesUtil.atualizaTela(new String[]{"frm:tabView:clientePanel","frm:messages"});		
 		//return "CadastroCliente?faces-redirect=true";
 	}
 	
@@ -83,14 +81,6 @@ public class ClientesManager implements Serializable {
 
 	public void setEnderecoEdicao(Endereco enderecoEdicao) {
 		this.enderecoEdicao = enderecoEdicao;
-	}
-
-	public Cliente getClienteSelecionado() {
-		return clienteSelecionado;
-	}
-
-	public void setClienteSelecionado(Cliente clienteSelecionado) {
-		this.clienteSelecionado = clienteSelecionado;
 	}
 
 	public List<Cliente> getClientes() {
