@@ -65,7 +65,7 @@ public class ClientesManager implements Serializable {
 	
 	public void novoCliente() {
 		this.clienteEdicao = new Cliente();
-		this.clienteSelecionado = new Cliente();
+		this.clienteSelecionado = null;
 		//return "CadastroCliente?faces-redirect=true";
 	}
 	
