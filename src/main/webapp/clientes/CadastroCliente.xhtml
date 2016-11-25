@@ -12,7 +12,7 @@
 			<p:toolbar id="toolbar">
 				<p:toolbarGroup>
 					<p:commandButton value="Salvar" action="#{clientesManager.salvar}"
-						process="tabView @this" update="@form" />
+						process="@this" update="@form" />
 						
 					<span class="ui-separator">
 						<span class="ui-icon ui-icon-grip-dotted-vertical" />
@@ -20,7 +20,7 @@
             		
 					<p:commandButton icon="ui-icon-pencil" title="Editar" disabled="#{clientesManager.clienteSelecionado == null}"
 	    							process="@this" update=":frm:tabView:clientePanel :frm:tabView:tableEnderecosCliente">
-	    					<f:setPropertyActionListener value="#{clientesManager.clienteSelecionado}" 
+	    					<f:setPropertyActionListener value="#{clientesManager.clienteEdicao}" 
 	    							target="#{clientesManager.clienteEdicao}"/>
 	    			</p:commandButton>
 				</p:toolbarGroup>
@@ -66,10 +66,10 @@
 					    <p:dataTable value="#{clientesManager.clientes}" var="cliente" id="tableClientes"
 										 emptyMessage="Nenhum cliente cadastrado" style="margin-top: 15px"
 										 paginator="true" paginatorAlwaysVisible="true" paginatorPosition="bottom"
-										 selection="#{clientesManager.clienteEdicao}" rows="15"
-		    							 selectionMode="single" rowKey="#{cliente.codigo}" reflow="true">
+		    							 selectionMode="single" rows="15" reflow="true"
+		    							 selection="#{clientesManager.clienteEdicao}" rowKey="#{cliente.codigo}" >
 							
-		    				<p:ajax event="rowSelect" update=":frm:toolbar"/>
+		    				<p:ajax event="rowSelect" update=":frm:toolbar :frm:tabView:clientePanel :frm:tabView:tableEnderecosCliente"/>
 		    				<p:ajax event="rowUnselect" update=":frm:toolbar :frm:tabView:clientePanel :frm:tabView:tableEnderecosCliente" />			    				
 		    						
 		    				<p:column headerText="#" style="width:20px">
