@@ -12,7 +12,7 @@
 			<p:toolbar id="toolbar">
 				<p:toolbarGroup>
 					<p:commandButton value="Salvar" action="#{clientesManager.salvar}"
-						process="@this" update="@form" />
+						process="@this :frm:tabView:clientePanel" update="@form" />
 						
 					<span class="ui-separator">
 						<span class="ui-icon ui-icon-grip-dotted-vertical" />
