@@ -6,6 +6,8 @@
 	<persistence-unit name="hermesPU" transaction-type="RESOURCE_LOCAL">
 	<non-jta-data-source>java:comp/env/jdbc/hermesDB</non-jta-data-source>
 	
+	
+		<!-- Properties for Hibernate -->
 		<properties>
 			
 			<!-- <property name="javax.persistence.schema-generation.database.action" value="drop-and-create" /> -->

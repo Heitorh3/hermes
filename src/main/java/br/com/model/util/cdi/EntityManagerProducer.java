@@ -7,16 +7,18 @@ import javax.enterprise.inject.Disposes;
 import javax.enterprise.inject.Produces;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
+import javax.persistence.Persistence;
 import javax.persistence.PersistenceUnit;
 
 @ApplicationScoped
 public class EntityManagerProducer {
 
+	
 	@PersistenceUnit
 	private EntityManagerFactory factory;
 	
 	public EntityManagerProducer() {
-		//this.factory = Persistence.createEntityManagerFactory("hermesPU");
+		this.factory = Persistence.createEntityManagerFactory("hermesPU");
 	}
 	
 	@Produces
@@ -32,5 +34,5 @@ public class EntityManagerProducer {
 		}
 		
 	}
-
+ 
 }

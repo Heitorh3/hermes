@@ -51,6 +51,18 @@
 		</plugins>
 	</build>
 
+	<dependencyManagement>
+	    <dependencies>
+	        <dependency>
+	            <groupId>org.apache.deltaspike.distribution</groupId>
+	            <artifactId>distributions-bom</artifactId>
+	            <version>${deltaspike.version}</version>
+	            <type>pom</type>
+	            <scope>import</scope>
+	        </dependency>
+	    </dependencies>
+	</dependencyManagement>
+
 	<dependencies>
 		<!-- POI -->
 		<dependency>
@@ -222,46 +234,42 @@
 		<dependency>
 			<groupId>org.apache.deltaspike.core</groupId>
 			<artifactId>deltaspike-core-api</artifactId>
-			<version>${deltaspike.version}</version>
 			<scope>compile</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.apache.deltaspike.core</groupId>
 			<artifactId>deltaspike-core-impl</artifactId>
-			<version>${deltaspike.version}</version>
 			<scope>runtime</scope>
 		</dependency>
-
+		
 		<!-- DeltaSpike Data -->
 		<dependency>
 			<groupId>org.apache.deltaspike.modules</groupId>
 			<artifactId>deltaspike-data-module-api</artifactId>
-			<version>${deltaspike.version}</version>
 			<scope>compile</scope>
 		</dependency>
 
 		<dependency>
 			<groupId>org.apache.deltaspike.modules</groupId>
 			<artifactId>deltaspike-data-module-impl</artifactId>
-			<version>${deltaspike.version}</version>
 			<scope>runtime</scope>
 		</dependency>
 
 		<!-- DeltaSpike JPA -->
+		<!-- 
 		<dependency> 
 			<groupId>org.apache.deltaspike.modules</groupId> 
 			<artifactId>deltaspike-jpa-module-api</artifactId> 
-			<version>${deltaspike.version}</version> 
 			<scope>compile</scope>
 		</dependency> 
 		<dependency>
 			<groupId>org.apache.deltaspike.modules</groupId> 
 			<artifactId>deltaspike-jpa-module-impl</artifactId> 
-			<version>${deltaspike.version}</version> 
 			<scope>runtime</scope> 
 		</dependency>
-
+		-->
+		
 		<!-- DeltaSpike Bean Validation -->
 		<!-- <dependency> <groupId>org.apache.deltaspike.modules</groupId> <artifactId>deltaspike-bean-validation-module-impl</artifactId> 
 			<version>${deltaspike.version}</version> <scope>runtime</scope> </dependency> -->
