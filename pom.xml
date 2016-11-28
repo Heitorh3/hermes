@@ -14,7 +14,7 @@
 		<deltaspike.version>1.7.2</deltaspike.version>
 
 		<!-- Weld Version -->
-		<weld.version>2.3.3.Final</weld.version>
+		<weld.version>2.4.1.Final</weld.version>
 	</properties>
 
 	<repositories>
@@ -121,12 +121,12 @@
 			<version>${weld.version}</version>
 			<scope>runtime</scope>
 		</dependency>
-
+		
 		<dependency>
-			<groupId>javax.enterprise</groupId>
-			<artifactId>cdi-api</artifactId>
-			<version>1.2</version>
-			<scope>provided</scope>
+		    <groupId>org.jboss.weld.se</groupId>
+		    <artifactId>weld-se</artifactId>
+		    <version>${weld.version}</version>
+		    <scope>runtime</scope>
 		</dependency>
 
 		<!-- Weld depende do Jandex -->
@@ -135,6 +135,14 @@
 			<artifactId>jandex</artifactId>
 			<version>1.2.2.Final</version>
 			<scope>compile</scope>
+		</dependency>
+		
+		<!-- CDI API -->
+		<dependency>
+			<groupId>javax.enterprise</groupId>
+			<artifactId>cdi-api</artifactId>
+			<version>1.2</version>
+			<scope>provided</scope>
 		</dependency>
 
 		<!-- Hibernate validator -->
@@ -243,6 +251,19 @@
 			<scope>runtime</scope>
 		</dependency>
 		
+		<!-- DeltaSpike CDI -->
+		<dependency>
+		    <groupId>org.apache.deltaspike.cdictrl</groupId>
+		    <artifactId>deltaspike-cdictrl-api</artifactId>
+		    <scope>compile</scope>
+		</dependency>
+		
+		<dependency>
+		    <groupId>org.apache.deltaspike.cdictrl</groupId>
+		    <artifactId>deltaspike-cdictrl-weld</artifactId>
+		    <scope>runtime</scope>
+		</dependency>
+		
 		<!-- DeltaSpike Data -->
 		<dependency>
 			<groupId>org.apache.deltaspike.modules</groupId>
@@ -257,7 +278,7 @@
 		</dependency>
 
 		<!-- DeltaSpike JPA -->
-		<!-- 
+		
 		<dependency> 
 			<groupId>org.apache.deltaspike.modules</groupId> 
 			<artifactId>deltaspike-jpa-module-api</artifactId> 
@@ -268,7 +289,7 @@
 			<artifactId>deltaspike-jpa-module-impl</artifactId> 
 			<scope>runtime</scope> 
 		</dependency>
-		-->
+		
 		
 		<!-- DeltaSpike Bean Validation -->
 		<!-- <dependency> <groupId>org.apache.deltaspike.modules</groupId> <artifactId>deltaspike-bean-validation-module-impl</artifactId> 

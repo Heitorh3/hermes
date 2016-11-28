@@ -8,13 +8,13 @@ import javax.enterprise.inject.Produces;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-import javax.persistence.PersistenceUnit;
+import javax.persistence.PersistenceContext;
 
 @ApplicationScoped
 public class EntityManagerProducer {
 
 	
-	@PersistenceUnit
+	@PersistenceContext
 	private EntityManagerFactory factory;
 	
 	public EntityManagerProducer() {

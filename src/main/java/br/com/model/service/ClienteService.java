@@ -5,6 +5,7 @@ import java.util.Optional;
 
 import javax.inject.Inject;
 
+import org.apache.deltaspike.jpa.api.transaction.Transactional;
 import org.apache.log4j.LogManager;
 import org.apache.log4j.Logger;
 
@@ -22,6 +23,7 @@ public class ClienteService implements Serializable {
 	@Inject
 	private ClienteRepository clientes;
 	
+	@Transactional
 	public Cliente salvar(Cliente cliente) throws NomeClienteJaCadastradoException{
 		Optional<Cliente> clienteExistente = clientes.findByEmail(cliente.getEmail());
 
